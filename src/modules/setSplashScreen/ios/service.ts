@@ -18,7 +18,7 @@ export const addIosSplashScreen = async (
 ) => {
   try {
     addSplashScreenXib(backgroundColor, resizeMode);
-    configureSplashScreen();
+    // configureSplashScreen();
     const iosSplashImageFolder = addIosImageSetContents('SplashImage', EImageSetType.IMAGE);
     await generateIosSplashImages(imageSource, iosSplashImageFolder);
   } catch (err) {

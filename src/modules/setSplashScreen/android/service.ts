@@ -54,29 +54,29 @@ const addReactNativeSplashScreen = (
   const packageJson = require(join(process.cwd(), './package'));
   const mainActivityPath = `${ANDROID_MAIN_PATH}/java/com/${packageJson.name.toLowerCase()}/MainActivity.java`;
 
-  applyPatch(mainActivityPath, {
-    pattern: /^(.+?)(?=import)/gs,
-    patch: 'import android.os.Bundle;\n' + 'import org.devio.rn.splashscreen.SplashScreen;\n',
-  });
+  // applyPatch(mainActivityPath, {
+  //   pattern: /^(.+?)(?=import)/gs,
+  //   patch: 'import android.os.Bundle;\n' + 'import org.devio.rn.splashscreen.SplashScreen;\n',
+  // });
 
-  const onCreateRegExp = /^.*onCreate.*[\r\n]/gm;
-
-  if (readFile(mainActivityPath).match(onCreateRegExp)) {
-    applyPatch(mainActivityPath, {
-      pattern: onCreateRegExp,
-      patch: 'SplashScreen.show(this, R.style.SplashScreenTheme);',
-    });
-  } else {
-    applyPatch(mainActivityPath, {
-      pattern: /^.*MainActivity.*[\r\n]/gm,
-      patch:
-        '    @Override\n' +
-        '    protected void onCreate(Bundle savedInstanceState) {\n' +
-        '        SplashScreen.show(this, R.style.SplashScreenTheme);\n' +
-        '        super.onCreate(savedInstanceState);\n' +
-        '    }',
-    });
-  }
+  // const onCreateRegExp = /^.*onCreate.*[\r\n]/gm;
+  //
+  // if (readFile(mainActivityPath).match(onCreateRegExp)) {
+  //   applyPatch(mainActivityPath, {
+  //     pattern: onCreateRegExp,
+  //     patch: 'SplashScreen.show(this, R.style.SplashScreenTheme);',
+  //   });
+  // } else {
+  //   applyPatch(mainActivityPath, {
+  //     pattern: /^.*MainActivity.*[\r\n]/gm,
+  //     patch:
+  //       '    @Override\n' +
+  //       '    protected void onCreate(Bundle savedInstanceState) {\n' +
+  //       '        SplashScreen.show(this, R.style.SplashScreenTheme);\n' +
+  //       '        super.onCreate(savedInstanceState);\n' +
+  //       '    }',
+  //   });
+  // }
 };
 
 const generateAndroidSplashImages = (imageSource: string) =>
