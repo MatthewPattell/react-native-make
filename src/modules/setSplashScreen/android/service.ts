@@ -42,17 +42,17 @@ const addReactNativeSplashScreen = (
     join(__dirname, '../../../../templates/android/drawable/splashscreen.xml'),
     `${ANDROID_MAIN_RES_PATH}/drawable/splashscreen.xml`
   );
-  copyFile(
-    join(__dirname, `../../../../templates/android/layout/launch_screen.${resizeMode}.xml`),
-    `${ANDROID_MAIN_RES_PATH}/layout/launch_screen.xml`
-  );
-  applyPatch(`${ANDROID_MAIN_RES_PATH}/values/styles.xml`, {
-    pattern: /^.*<resources>.*[\r\n]/g,
-    patch: readFile(join(__dirname, '../../../../templates/android/values/styles-splash.xml')),
-  });
+  // copyFile(
+  //   join(__dirname, `../../../../templates/android/layout/launch_screen.${resizeMode}.xml`),
+  //   `${ANDROID_MAIN_RES_PATH}/layout/launch_screen.xml`
+  // );
+  // applyPatch(`${ANDROID_MAIN_RES_PATH}/values/styles.xml`, {
+  //   pattern: /^.*<resources>.*[\r\n]/g,
+  //   patch: readFile(join(__dirname, '../../../../templates/android/values/styles-splash.xml')),
+  // });
 
-  const packageJson = require(join(process.cwd(), './package'));
-  const mainActivityPath = `${ANDROID_MAIN_PATH}/java/com/${packageJson.name.toLowerCase()}/MainActivity.java`;
+  // const packageJson = require(join(process.cwd(), './package'));
+  // const mainActivityPath = `${ANDROID_MAIN_PATH}/java/com/${packageJson.name.toLowerCase()}/MainActivity.java`;
 
   // applyPatch(mainActivityPath, {
   //   pattern: /^(.+?)(?=import)/gs,

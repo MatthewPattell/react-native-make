@@ -27,13 +27,16 @@ const addLaunchScreenBackgroundColor = (backgroundColor) => {
 const addReactNativeSplashScreen = (backgroundColor, resizeMode = type_1.EResizeMode.CONTAIN) => {
     addLaunchScreenBackgroundColor(backgroundColor);
     file_processing_1.copyFile(path_1.join(__dirname, '../../../../templates/android/drawable/splashscreen.xml'), `${config_1.ANDROID_MAIN_RES_PATH}/drawable/splashscreen.xml`);
-    file_processing_1.copyFile(path_1.join(__dirname, `../../../../templates/android/layout/launch_screen.${resizeMode}.xml`), `${config_1.ANDROID_MAIN_RES_PATH}/layout/launch_screen.xml`);
-    file_processing_1.applyPatch(`${config_1.ANDROID_MAIN_RES_PATH}/values/styles.xml`, {
-        pattern: /^.*<resources>.*[\r\n]/g,
-        patch: file_processing_1.readFile(path_1.join(__dirname, '../../../../templates/android/values/styles-splash.xml')),
-    });
-    const packageJson = require(path_1.join(process.cwd(), './package'));
-    const mainActivityPath = `${config_1.ANDROID_MAIN_PATH}/java/com/${packageJson.name.toLowerCase()}/MainActivity.java`;
+    // copyFile(
+    //   join(__dirname, `../../../../templates/android/layout/launch_screen.${resizeMode}.xml`),
+    //   `${ANDROID_MAIN_RES_PATH}/layout/launch_screen.xml`
+    // );
+    // applyPatch(`${ANDROID_MAIN_RES_PATH}/values/styles.xml`, {
+    //   pattern: /^.*<resources>.*[\r\n]/g,
+    //   patch: readFile(join(__dirname, '../../../../templates/android/values/styles-splash.xml')),
+    // });
+    // const packageJson = require(join(process.cwd(), './package'));
+    // const mainActivityPath = `${ANDROID_MAIN_PATH}/java/com/${packageJson.name.toLowerCase()}/MainActivity.java`;
     // applyPatch(mainActivityPath, {
     //   pattern: /^(.+?)(?=import)/gs,
     //   patch: 'import android.os.Bundle;\n' + 'import org.devio.rn.splashscreen.SplashScreen;\n',
